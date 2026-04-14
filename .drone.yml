@@ -3,7 +3,17 @@ type: docker
 name: default
 
 steps:
-  - name: test
-    image: alpine
+  - name: install
+    image: node:18
     commands:
-      - echo "Drone CI is working 🚀"
+      - npm install
+
+  - name: test
+    image: node:18
+    commands:
+      - npm test
+
+  - name: run
+    image: node:18
+    commands:
+      - node app.js
