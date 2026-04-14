@@ -3,7 +3,7 @@ type: docker
 name: default
 
 steps:
-  - name: hello
+  - name: test
     image: alpine
     commands:
-      - echo "🚀 Drone CI is working perfectly!"
+      - echo "Drone CI is working 🚀"
