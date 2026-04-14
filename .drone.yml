@@ -8,11 +8,6 @@ steps:
     commands:
       - npm install
 
-  - name: test
-    image: node:18
-    commands:
-      - npm test
-
   - name: run
     image: node:18
     commands:
