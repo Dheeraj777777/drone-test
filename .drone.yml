@@ -8,7 +8,23 @@ steps:
     commands:
       - npm install
 
-  - name: test
-    image: node:18
+  - name: build docker image
+    image: docker
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
     commands:
-      - echo "Build successful ✅"
+      - docker build -t my-app .
+
+  - name: run container
+    image: docker
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+      - docker run -d -p 3000:3000 my-app
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
